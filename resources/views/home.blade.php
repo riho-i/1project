@@ -126,50 +126,20 @@
                 </tr>
             </thead>
             <tbody>
+                
+                @foreach ($disp_item as $item)
                 <tr>
-                    <th class="th-size" scope="row">1</th>
-                    <td>{!! $b_name1 !!}</td>
-                    <td>{!! $b_zyuusyo1 !!}</td>
+                    <th class="th-size" scope="row">{{ $item['id'] }}</th>
+                    <td> {{ $item['name'] }} </td>
+                    <td> {{ $item['zyuusyo'] }} </td>
                 </tr>
-                <tr>
-                    <th class="th-size" scope="row">2</th>
-                    <td>{!! $b_name2 !!}</td>
-                    <td>{!! $b_zyuusyo2 !!}</td>
-                </tr>
-                <tr>
-                    <th class="th-size" scope="row">3</th>
-                    <td>{!! $b_name3 !!}</td>
-                    <td>{!! $b_zyuusyo3 !!}</td>
-                </tr>
-                <tr>
-                    <th class="th-size" scope="row">4</th>
-                    <td>{!! $b_name3 !!}</td>
-                    <td>{!! $b_zyuusyo3 !!}</td>
-                </tr>
-                <tr>
-                    <th class="th-size" scope="row">5</th>
-                    <td>{!! $b_name3 !!}</td>
-                    <td>{!! $b_zyuusyo3 !!}</td>
-                </tr>
-                <tr>
-                    <th class="th-size" scope="row">6</th>
-                    <td>{!! $b_name3 !!}</td>
-                    <td>{!! $b_zyuusyo3 !!}</td>
-                </tr>
-                <tr>
-                    <th class="th-size" scope="row">7</th>
-                    <td>{!! $b_name3 !!}</td>
-                    <td>{!! $b_zyuusyo3 !!}</td>
-                </tr>
-                <tr>
-                    <th class="th-size" scope="row">8</th>
-                    <td>{!! $b_name3 !!}</td>
-                    <td>{!! $b_zyuusyo3 !!}</td>
-                </tr>
+                @endforeach
+                
+               
+                
             </tbody>
         </table>
-
-        {{ $user[0]-> name }} 
+        
 
         {{-- ページ切り替え --}}
             <nav aria-label="ページ切り替え">

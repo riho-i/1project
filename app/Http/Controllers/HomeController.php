@@ -12,33 +12,25 @@ class Homecontroller extends Controller
      * テスト画面表示する
      * @return view
      */
-
-     //物件名
     public function index() {
-        //物件名
-        $name1 = 'ねこちゃんハウス';
-        $name2 = 'わんちゃんハウス';
-        $name3 = 'うさちゃんハウス';
+        
+        //データ配列取得
+        $bukkens = Bukken::all();
+   
+        //データ表示用の配列作成
+        $bukkens_disp = [];
+        foreach ($bukkens as $key => $value) {
+            $temp = [];
+            $temp['id'] = $value -> id;
+            $temp['name'] = $value -> name;
+            $temp['zyuusyo'] = $value -> zyuusyo;
+            $bukkens_disp[] = $temp;
+        }
 
-    //物件住所
-        $b_zyuusyo1 = '群馬県伊勢崎市うんちゃら';
-        $b_zyuusyo2 = '群馬県前橋市うんちゃら';
-        $b_zyuusyo3 = '群馬県伊勢崎市１１１';
-
-        $users = DB::table('bukkens')->get();
-        $users = Bukken::get();
-
+        //viewへの返却値
         $result = [   
-            'b_name1' => $name1,
-            'b_name2' => $name2,
-            'b_name3' => $name3,    
-            'b_zyuusyo1' => $b_zyuusyo1,
-            'b_zyuusyo2' => $b_zyuusyo2,
-            'b_zyuusyo3' => $b_zyuusyo3,    
-             'user' => $users       
+             'disp_item' => $bukkens_disp,   
              ];
-
-             
 
         return view('home', $result);
     }
