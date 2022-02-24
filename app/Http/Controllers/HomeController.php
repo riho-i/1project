@@ -12,27 +12,52 @@ class Homecontroller extends Controller
      * テスト画面表示する
      * @return view
      */
-    public function index() {
+    public function index(Request $request) {
+    
+        // →検索条件を使った検索
+        $bukken = new Bukken;
+        $bukkens = [];
         
-        //データ配列取得
-        $bukkens = Bukken::all();
+        // 検索条件の設定
+        //物件名が一致したら表示する
+        if( $request->input('textbox')){
+            $bukken = $bukken->where('name', '=',  $request->input('textbox'));
+        }
+        if( $request->input('src2')){
+            $bukken = $bukken->where('zyuusyo', 'like',  '%' . $request->input('src2') . '%');
+        }
+
+        
+        $bukkens = $bukken->paginate(5);
+
+        // ページングの設定
+        //データ件数取得
+        //$count = Bukken::count();
+        //データを５件分取得
+        //$users = Bukken::paginate(5);
    
         //データ表示用の配列作成
         $bukkens_disp = [];
         foreach ($bukkens as $key => $value) {
             $temp = [];
-            $temp['id'] = $value -> id;
+            $temp['id'] = $value -> id . 'test';
             $temp['name'] = $value -> name;
             $temp['zyuusyo'] = $value -> zyuusyo;
+            $temp['owner'] = $value -> owner;
             $bukkens_disp[] = $temp;
         }
 
         //viewへの返却値
         $result = [   
              'disp_item' => $bukkens_disp,   
+             'count' => count($bukkens),
+             'user' => $bukkens,
+
              ];
 
+        // viewの表示
         return view('home', $result);
     }
+
 
 }

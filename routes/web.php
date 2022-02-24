@@ -25,7 +25,9 @@ Route::get('/phpinfo', function () {
 
 
 
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index_test']);
+Route::post('/home', [App\Http\Controllers\HomeController::class, 'index_test']);
 

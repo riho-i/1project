@@ -6,7 +6,7 @@
     margin-bottom: 3rem;
     margin-right: 5rem;
     margin-left: 3rem; 
-    background-color: #727272;
+    background-color: #b1a9cf;
 }
 
 #content {
@@ -108,4 +108,14 @@ td,tr {
 .btn-toggle-nav a:focus {
     background-color: #a6e2fd;
 }
+
+.page-link{
+    color: #ff0000;
+}
+
+.btn-primary {
+    display: block;
+    margin: 0 0 0 auto;
+}
+
 

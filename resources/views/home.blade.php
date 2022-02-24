@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Laravel</title>
 
     <!-- Fonts -->
@@ -99,70 +99,66 @@
 
        <div class id="content">
          <!-- 検索画面 -->
+
+         <form action="" method="post">
+            @csrf
+            <input type="text" name="textbox"> 
+            <input type="text" name="src2"> 
+            <button>検索</button>
+        </form>
+
         <div class="form">
-                <div class="mb-3">
+            <div class="mb-3">
+                <form action="" method="post">
+                    @csrf
                     <label for="Input" class="form-label">物件名</label>
-                    <input type="text" class="form-control" id="Input">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleFormSelect1" class="form-label">住所</label>
-                  <select class="form-select" id="exampleFormSelect1">
-                    <option selected>選択</option>
-                    <option value="1">群馬県前橋市</option>
-                    <option value="2">群馬県伊勢崎市</option>
-                    <option value="3">群馬県太田市</option>
-                  </select>
-                </div>
+                    <input type="text" class="form-control" name="textbox">
+                    <input type="text" class="form-control" name="scr2">
+                    <input class="btn btn-primary" type="button" value="検索">
+                </form>
+            </div>
         </div>
     
         <!-- テーブル　-->
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">物件No</th>
-                    <th scope="col">物件名</th>
-                    <th scope="col">住所</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-                @foreach ($disp_item as $item)
-                <tr>
-                    <th class="th-size" scope="row">{{ $item['id'] }}</th>
-                    <td> {{ $item['name'] }} </td>
-                    <td> {{ $item['zyuusyo'] }} </td>
-                </tr>
-                @endforeach
-                
-               
-                
-            </tbody>
-        </table>
+            <table class="table">
+                <thead>        
+                    <tr>
+                        <th scope="col">物件No</th>
+                        <th scope="col">物件名</th>
+                        <th scope="col">住所</th>
+                        <th scope="col">オーナー</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    @foreach ($disp_item as $item)
+                    <tr>
+                        <th class="th-size" scope="row">{{ $item['id'] }}</th>
+                        <td> {{ $item['name'] }} </td>
+                        <td> {{ $item['zyuusyo'] }} </td>
+                        <td> {{ $item['owner'] }} </td>
+                    </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+
+           </div>
+
+           {{ $user->links(); }}
+
+        </article>
+
+   
         
-
-        {{-- ページ切り替え --}}
-            <nav aria-label="ページ切り替え">
-                <ul class="pagination justify-content-end">
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-
-          </div>
-        <article>
     </div>
+
+
+</div>
+
+
+  
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
             </script>
