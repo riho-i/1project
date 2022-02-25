@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +25,7 @@ Route::get('/phpinfo', function () {
 
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::post('/home', [HomeController::class, 'index'])->name('home');
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
-Route::post('/home', [App\Http\Controllers\HomeController::class, 'index']);
-
+Route::match(['get', 'post'], '/regist',  [HomeController::class, 'regist'])->name('regist');

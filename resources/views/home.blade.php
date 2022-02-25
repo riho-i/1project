@@ -64,7 +64,7 @@
                         </button>
                         <div class="collapse show" id="home-collapse">
                             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                <li><a href="#" class="link-dark rounded">物件管理</a></li>
+                                <li><a href= "{{ route("regist") }}" class="link-dark rounded">物件追加</a></li>
                                 <li><a href="#" class="link-dark rounded">物件情報</a></li>
                             </ul>
                         </div>
@@ -99,13 +99,13 @@
 
        <div class id="content">
          <!-- 検索画面 -->
-
+{{-- 
          <form action="" method="post">
             @csrf
             <input type="text" name="textbox"> 
             <input type="text" name="src2"> 
             <button>検索</button>
-        </form>
+        </form> --}}
 
         <div class="form">
             <div class="mb-3">
@@ -113,8 +113,9 @@
                     @csrf
                     <label for="Input" class="form-label">物件名</label>
                     <input type="text" class="form-control" name="textbox">
-                    <input type="text" class="form-control" name="scr2">
-                    <input class="btn btn-primary" type="button" value="検索">
+                    <label for="Input" class="form-label">住所</label>
+                    <input type="text" class="form-control" name="src2">
+                    <button class="btn btn-primary">検索</button>
                 </form>
             </div>
         </div>
