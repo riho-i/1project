@@ -31,4 +31,4 @@
 + jQuery
 + PHP
 + laravel 8.x
-+ phpMyAdmin 5.1.1
++ MySQL
